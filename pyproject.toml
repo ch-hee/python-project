@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "hee-python-project"
+version = "0.1.0"
+description = ""
+authors = ["ch-hee <148758586+ch-hee@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+selenium = "^4.14.0"
+gtts = "^2.4.0"
+googletrans = "4.0.0-rc1"
+pyqt5-qt5 = "5.15.2"
+pyqt5 = "^5.15.10"
+playsound = "1.2.2"
+speechrecognition = "^3.10.0"
+pyaudio = "^0.2.13"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
