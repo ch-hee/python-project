@@ -1,5 +1,5 @@
 from gensim.summarization.summarizer import summarize
-from konlpy.tag import Okt
+
 # 한글 텍스트
 text = """경기도 버스 노사가 임금협상과 준공영제 도입 시기 등을 놓고 최종 조정에 나선 결과 합의에 도달했습니다.
 
@@ -21,8 +21,6 @@ text = """경기도 버스 노사가 임금협상과 준공영제 도입 시기 
 
 김기성 경기도버스운송사업조합 이사장은 "지사님과 도 직원들이 3일 밤낮을 함께 하며 협상이 원만히 되도록 지원해주셔서 감사하다"며 "준공영제를 훌륭히 완수할 수 있도록 지원 부탁드린다"고 전했습니다."""
 
-# KoNLPy를 사용하여 명사만 추출
-
 # Gensim을 사용하여 요약
-summary = summarize(text, ratio=0.5)  # 20%의 요약 비율
+summary = summarize(text, ratio=0.3)  # 30%의 요약 비율
 print(summary)
