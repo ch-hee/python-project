@@ -17,6 +17,7 @@ Speech To Text, Text To Speech를 이용해 인공지능 비서 만들기
 
 ### Installation
 ```
+  $ git clone https://github.com/ch-hee/python-project.git
   $ poetry init
   $ poetry install
 ```
