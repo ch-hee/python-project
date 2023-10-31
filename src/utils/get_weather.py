@@ -1,6 +1,7 @@
 import requests
 from datetime import datetime, timedelta
 from googletrans import Translator
+import os 
 
 def translate_to_ko(input_text):
     translator = Translator()
@@ -62,5 +63,5 @@ def get_weather(api_key, city, is_today=True):
         return "도시를 찾을 수 없습니다. 다시 한번 말씀해 주세요."
 
 if __name__ == "__main__":
-    api_key = "7f5acd97b26c88399f43eea58c1b37c9"
+    api_key = os.environ.get("WEATHER_API_KEY")
     print(get_weather(api_key, 'suwon'))

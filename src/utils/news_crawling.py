@@ -5,9 +5,8 @@ import requests
 import json
 
 def send_news_to_slack(top_news_list):
-    slack_hooks_url = 'https://hooks.slack.com/services/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'
+    slack_hooks_url = 'https://hooks.slack.com/services/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'
     headers = {'Content-type': 'application/json'}
-    
     for news_list in top_news_list:
         attachments = []
         for news in news_list['news']:
@@ -27,14 +26,6 @@ def send_news_to_slack(top_news_list):
         data = json.dumps(payload, ensure_ascii=False, indent=2).encode('utf-8')
         response = requests.post(slack_hooks_url, data=data, headers=headers)
         
-        print(response.status_code)
-        print('------------------- 전송 완료 -------------------')
-
-def hello():
-    slack_hooks_url = 'https://hooks.slack.com/services/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'
-    message = '안녕하세요 오늘은 파이썬의 크롤링을 배웠습니다. 여기에 나중에 뉴스를 공유할 예정입니다.'
-    response = requests.post(slack_hooks_url, data=json.dumps({'text' : message}), headers={'Content-Type' : 'application/json'})
-    print(response.status_code)
 def scrape_top_news_from_page(url):
     try:
         url = 'https://news.naver.com/main/ranking/popularDay.naver'
@@ -61,7 +52,6 @@ def scrape_top_news_from_page(url):
 
                 top_news_list.append({'media': media_name, 'news': news_list})
         send_news_to_slack(top_news_list)
-        # hello()
         return top_news_list
     
     except requests.exceptions.RequestException as e:
@@ -91,7 +81,6 @@ def get_article_content(url, headers):
         return None
 
 if __name__ == "__main__":
-    # 주어진 페이지 URL
     given_page_url = 'https://news.naver.com/main/ranking/popularDay.naver'
 
     top_news_result = scrape_top_news_from_page(given_page_url)
@@ -102,7 +91,6 @@ if __name__ == "__main__":
             for idx, news in enumerate(item['news'], start=1):
                 print(f"\n제목 {idx}: {news['title']}")
                 print(f"링크: {news['link']}")
-                print(f"내용:\n{news['content'][:300]}...")  # 기사 내용 중 일부만 출력
-                continue
+                print(f"내용:\n{news['content'][:300]}...")
     else:
         print("뉴스를 가져올 수 없습니다.")
